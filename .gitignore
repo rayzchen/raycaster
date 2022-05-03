@@ -1,0 +1,6 @@
+build/
+bin/
+include/SDL2
+lib/
+**/__pycache__/
+*.py[oc]
