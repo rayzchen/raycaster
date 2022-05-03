@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+echo "Compiling math..."
+/c/ProgramData/mingw64/bin/g++ -Wall -c src/math.cpp -o build/math.o -Iinclude -lstdc++
+echo "Compiling raycaster..."
+/c/ProgramData/mingw64/bin/g++ -Wall -c src/raycaster.cpp -o build/raycaster.o -Iinclude -lstdc++
+echo "Bundling raycaster..."
+/c/ProgramData/mingw64/bin/ar rcs lib/libraytracer.a build/math.o build/raycaster.o
+echo "Compiling main.exe..."
+/c/ProgramData/mingw64/bin/g++ -Wall src/main.cpp -o build/main.exe -Iinclude -Llib -lstdc++ -lraytracer -lmingw32 -lSDL2main -lSDL2
+
