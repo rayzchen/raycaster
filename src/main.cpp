@@ -57,6 +57,11 @@ class Window {
         }
 
         void quit() {
+            SDL_Surface *sshot = SDL_CreateRGBSurface(0, WINDOW_WIDTH, WINDOW_HEIGHT, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+            SDL_RenderReadPixels(this->renderer, NULL, SDL_PIXELFORMAT_ARGB8888, sshot->pixels, sshot->pitch);
+            SDL_SaveBMP(sshot, "out.bmp");
+            SDL_FreeSurface(sshot);
+
             SDL_DestroyRenderer(this->renderer);
             SDL_DestroyWindow(this->window);
             SDL_Quit();
